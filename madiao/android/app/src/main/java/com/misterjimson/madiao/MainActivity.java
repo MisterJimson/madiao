@@ -1,4 +1,4 @@
-package com.example.madiao;
+package com.misterjimson.madiao;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
