@@ -1,111 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:madiao/game/game_objects.dart';
 
 class CardW extends StatelessWidget {
   final PlayingCard card;
-  CardW(this.card);
+
+  CardW({@required this.card});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
-  }
-}
-
-class PlayingCard {
-  final Suit suit;
-  final int value;
-
-  PlayingCard(this.suit, this.value);
-}
-
-class Suit {
-  String name;
-
-  Suit.clubs() {
-    name = "Clubs";
+    return Container(
+      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(_getIconForCard()),
+          Text(card.value.value.toString())
+        ],
+      ),
+    );
   }
 
-  Suit.diamonds() {
-    name = "Diamonds";
+  IconData _getIconForCard() {
+    if (card.suit == Suit.hearts()) {
+      return Icons.favorite;
+    } else if (card.suit == Suit.clubs()) {
+      return Icons.bubble_chart;
+    } else if (card.suit == Suit.diamonds()) {
+      return Icons.eject;
+    } else if (card.suit == Suit.spades()) {
+      return Icons.edit_location;
+    }
+
+    return Icons.error_outline;
   }
-
-  Suit.hearts() {
-    name = "Hearts";
-  }
-
-  Suit.spades() {
-    name = "Spades";
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return (other.name == name);
-  }
-
-  @override
-  int get hashCode => name.hashCode;
-}
-
-class CardValue {
-  int value;
-
-  CardValue.ace() {
-    value = 1;
-  }
-
-  CardValue.two() {
-    value = 2;
-  }
-
-  CardValue.three() {
-    value = 3;
-  }
-
-  CardValue.four() {
-    value = 4;
-  }
-
-  CardValue.five() {
-    value = 5;
-  }
-
-  CardValue.six() {
-    value = 6;
-  }
-
-  CardValue.seven() {
-    value = 7;
-  }
-
-  CardValue.eight() {
-    value = 8;
-  }
-
-  CardValue.nine() {
-    value = 9;
-  }
-
-  CardValue.ten() {
-    value = 10;
-  }
-
-  CardValue.jack() {
-    value = 11;
-  }
-
-  CardValue.queen() {
-    value = 12;
-  }
-
-  CardValue.king() {
-    value = 13;
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return (other.value == value);
-  }
-
-  @override
-  int get hashCode => value.hashCode;
 }
