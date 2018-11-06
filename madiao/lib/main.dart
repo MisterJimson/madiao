@@ -65,53 +65,61 @@ class _MyHomePageState extends State<MyHomePage> {
       CrossAxisAlignment crossAxisAlignment,
       List<Widget> children}) {
     return Container(
+      padding: EdgeInsets.all(15.0),
       constraints: BoxConstraints.expand(),
       color: color,
-      child: Row(crossAxisAlignment: crossAxisAlignment, children: children),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: crossAxisAlignment,
+          children: children),
     );
+  }
+
+  List<Widget> getCards() {
+    return [
+      CardW(
+        card: PlayingCard(suit: Suit.hearts(), value: CardValue.eight()),
+      ),
+      CardW(
+        card: PlayingCard(suit: Suit.diamonds(), value: CardValue.four()),
+      ),
+      CardW(
+        card: PlayingCard(suit: Suit.spades(), value: CardValue.jack()),
+      ),
+      CardW(
+        card: PlayingCard(suit: Suit.hearts(), value: CardValue.nine()),
+      ),
+      CardW(
+        card: PlayingCard(suit: Suit.clubs(), value: CardValue.six()),
+      ),
+    ];
   }
 
   Container _buildP1HandZone() {
     return _buildZone(
         color: Colors.red,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          CardW(
-            card: PlayingCard(suit: Suit.hearts(), value: CardValue.eight()),
-          )
-        ]);
+        children: getCards());
   }
 
   Container _buildP2HandZone() {
     return _buildZone(
         color: Colors.blue,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          CardW(
-            card: PlayingCard(suit: Suit.hearts(), value: CardValue.eight()),
-          )
-        ]);
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: getCards());
   }
 
   Container _buildP1BoardZone() {
     return _buildZone(
         color: Colors.green,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          CardW(
-            card: PlayingCard(suit: Suit.hearts(), value: CardValue.eight()),
-          )
-        ]);
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: getCards());
   }
 
   Container _buildP2BoardZone() {
     return _buildZone(
         color: Colors.amber,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          CardW(
-            card: PlayingCard(suit: Suit.hearts(), value: CardValue.eight()),
-          )
-        ]);
+        children: getCards());
   }
 }
